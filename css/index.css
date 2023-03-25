@@ -1,0 +1,33 @@
+body, html{
+    margin: 0px;
+}
+.matrixBox{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    /*
+    border: 1px solid #ff0000;
+    background-color: white;
+    */
+}
+
+p {
+    margin: auto;
+}
+
+.matrixEquation {
+    margin: 1em;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.matrix{
+    position: relative;
+    margin: 0px 3px;
+}
+
+.p-element-matrix{
+    font-size: 32px;
+}
+

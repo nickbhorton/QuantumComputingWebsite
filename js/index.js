@@ -37,8 +37,7 @@ class MatrixElement {
         this.div = document.createElement("div")
         this.div.id = this.id
         this.div.classList.add("matrix")
-        this.div.style = `
-        width: ${this.matrixWidth}px;
+        this.div.style = `width: ${this.matrixWidth}px;
         height: ${this.matrixHeight}px;`
         this.parent.appendChild(this.div)
 
@@ -107,6 +106,30 @@ class MatrixElement {
     }
 }
 
+class MatrixEquation {
+    elementArray = []
+    id = null
+    constructor(id, parent_id) {
+        this.id = id
+    }
+
+    addElement(element){
+        if (element instanceof MatrixElement){
+            console.log("MatrixElement")
+        }
+        else if (element instanceof String){
+            console.log("String")
+        }
+        else {
+            console.log("hmm")
+        }
+    }
+
+    getId(){
+        return this.id
+    }
+}
+
 m1 = new Matrix(
     [
         ["a", "b"],
@@ -128,8 +151,23 @@ m3 = new Matrix(
     ]
 )
 
-let m1Element = new MatrixElement(m1, "matrix1", "matrix-eq-1", 128, 128)
+m4 = new Matrix (
+    [
+        ["\\alpha^{2}", "\\alpha \\beta^{*}"],
+        ["\\alpha^{*} \\beta", "\\beta^{2}"]
+    ]
+)
 
-let m2Element = new MatrixElement(m2, "matrix2", "matrix-eq-1", 128, 128)
+let mEq1 = new MatrixEquation("matrix-eq-1")
+let m1Element = new MatrixElement(m1, "matrix1", mEq1.getId(), 128, 128)
+let m2Element = new MatrixElement(m2, "matrix2", mEq1.getId(), 128, 128)
+let m3Element = new MatrixElement(m3, "matrix3", mEq1.getId(), 256+64, 128)
 
-let m3Element = new MatrixElement(m3, "matrix3", "matrix-eq-1", 256+64, 128)
+mEq1.addElement(m1Element)
+mEq1.addElement(m2Element)
+mEq1.addElement("$$=$$")
+mEq1.addElement(m3Element)
+
+let mEq2 = new MatrixEquation("matrix-eq-2")
+let m4Element = new MatrixElement(m4, "matrix4", mEq2.getId(), 128+64, 128)
+

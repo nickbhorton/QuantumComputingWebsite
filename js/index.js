@@ -1,3 +1,7 @@
+const style = getComputedStyle(document.querySelector("body"))
+const backgroundColor = style.backgroundColor
+const textColor = style.color
+
 class Matrix {
     m = []
     rows = null
@@ -56,16 +60,16 @@ class MatrixElement {
             xmlns="http://www.w3.org/2000/svg"
         >
         <g id="Frame 1" clip-path="url(#clip0_0_1)">
-            <rect width="100" height="100" fill="white"/>
+            <rect width="100" height="100" fill="${backgroundColor}"/>
             <g id="right">
-                <line id="right-mid" y1="-0.5" x2="100" y2="-0.5" transform="matrix(0 1 1 0 100 0)" stroke="black"/>
-                <line id="right-top" y1="-0.5" x2="15" y2="-0.5" transform="matrix(-1 0 0 1 100 1)" stroke="black"/>
-                <line id="right-bottom" y1="-0.5" x2="15" y2="-0.5" transform="matrix(-1 0 0 1 99 100)" stroke="black"/>
+                <line id="right-mid" y1="-0.5" x2="100" y2="-0.5" transform="matrix(0 1 1 0 100 0)" stroke="${textColor}"/>
+                <line id="right-top" y1="-0.5" x2="15" y2="-0.5" transform="matrix(-1 0 0 1 100 1)" stroke="${textColor}"/>
+                <line id="right-bottom" y1="-0.5" x2="15" y2="-0.5" transform="matrix(-1 0 0 1 99 100)" stroke="${textColor}"/>
             </g>
             <g id="left">
-                <line id="left-mid" x1="0.5" x2="0.5" y2="100" stroke="black"/>
-                <line id="left-top" y1="0.5" x2="15" y2="0.5" stroke="black"/>
-                <line id="left-bottom" x1="1" y1="99.5" x2="16" y2="99.5" stroke="black"/>
+                <line id="left-mid" x1="0.5" x2="0.5" y2="100" stroke="${textColor}"/>
+                <line id="left-top" y1="0.5" x2="15" y2="0.5" stroke="${textColor}"/>
+                <line id="left-bottom" x1="1" y1="99.5" x2="16" y2="99.5" stroke="${textColor}"/>
             </g>
         </g>
         <defs>

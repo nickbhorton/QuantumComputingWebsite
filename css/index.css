@@ -1,12 +1,13 @@
 :root {
-    --color-blue: #22A39F;
-    --color-black: #222222;
-    --color-white: #F3EFE0;
-    --color-grey: #434242;
+    --color-light-green: #AEC3B0;
+    --color-light-blue: #598392;
+    --color-dark-blue: #124559;
+    --color-black: #01161E;
+    --color-white: #EFF6E0;
   }
 
 body, html{
-    color: var(--color-grey);
+    color: var(--color-black);
     background-color: var(--color-white);
     margin: 0px;
 }
@@ -20,13 +21,15 @@ body, html{
     */
 }
 
+
 .section-label,
 .body-paragraph{
 font-family: sans-serif;
 }
 
 .section-label{
-    border-left: 3px solid var(--color-blue);
+    font-size: 40px;
+    border-left: 3px solid var(--color-light-blue);
     padding: 0em 0.3em;
     margin: 0.7em 0.7em;
 }
@@ -37,6 +40,7 @@ font-family: sans-serif;
 }
 
 p {
+    font-size: 20px;
     margin: auto;
 }
 
@@ -55,4 +59,40 @@ p {
 .p-element-matrix{
     font-size: 32px;
 }
+
+.side_bar{
+    width: 15%;
+    min-height: 100%;
+    background-color: var(--color-light-green);
+}
+
+.article{
+    width: 85%;
+}
+
+.page_elements{
+    display: flex;
+    justify-content: left;
+}
+
+.side_bar ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.side_bar button {
+    letter-spacing: 0.1em;
+    text-align: left;
+    font-size: 16px;
+    background-color: var(--color-light-green);
+    padding: 0.5em;
+    width: 100%;
+    border: 0px solid transparent;
+}
+
+.side_bar button:hover {
+    background-color: var(--color-light-blue);
+}
+
 

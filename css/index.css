@@ -95,4 +95,9 @@ p {
     background-color: var(--color-light-blue);
 }
 
+.matrix_element_string {
+    font-size: 40px;
+    margin: auto 0.2em;
+}
+
 

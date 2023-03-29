@@ -27,6 +27,7 @@ class MatrixElement {
     div = null
     id = null
     borderWidth = 4
+    matrixSide_svg_div = null
     constructor(matrix, id, parent_id, matrixWidth_px, matrixHeight_px){
         this.cols = matrix.cols
         this.rows = matrix.rows
@@ -36,52 +37,21 @@ class MatrixElement {
         this.matrixHeight = matrixHeight_px
         this.matrixNumberHeight = this.matrixHeight/this.cols
         this.matrixNumberWidth = this.matrixWidth/this.rows
+        this.numberMatrix = matrix.m
+        this.highlightArray = []
+
         // Set up parent-child relationship
-        this.parent = document.getElementById(parent_id)
+        this.parent = document.getElementById(this.parent_id)
         this.div = document.createElement("div")
         this.div.id = this.id
         this.div.classList.add("matrix")
-        this.div.style = `width: ${this.matrixWidth}px;
+        this.div.style = `
+        width: ${this.matrixWidth}px;
         height: ${this.matrixHeight}px;`
-        this.parent.appendChild(this.div)
-
-        // init numberMatrix to zeros
-        this.numberMatrix = matrix.m
-
-        // Adding The matrix sides with a svg file
-        const matrixSide_svg = document.createElement("div")
-        matrixSide_svg.innerHTML = `
-        <svg 
-            width=${matrixWidth_px}
-            height=${matrixHeight_px}
-            viewBox="0 0 100 100" 
-            fill="none" 
-            preserveAspectRatio="none" 
-            xmlns="http://www.w3.org/2000/svg"
-        >
-        <g id="Frame 1" clip-path="url(#clip0_0_1)">
-            <rect width="100" height="100" fill="${backgroundColor}"/>
-            <g id="right">
-                <line id="right-mid" y1="-0.5" x2="100" y2="-0.5" transform="matrix(0 1 1 0 100 0)" stroke="${textColor}"/>
-                <line id="right-top" y1="-0.5" x2="15" y2="-0.5" transform="matrix(-1 0 0 1 100 1)" stroke="${textColor}"/>
-                <line id="right-bottom" y1="-0.5" x2="15" y2="-0.5" transform="matrix(-1 0 0 1 99 100)" stroke="${textColor}"/>
-            </g>
-            <g id="left">
-                <line id="left-mid" x1="0.5" x2="0.5" y2="100" stroke="${textColor}"/>
-                <line id="left-top" y1="0.5" x2="15" y2="0.5" stroke="${textColor}"/>
-                <line id="left-bottom" x1="1" y1="99.5" x2="16" y2="99.5" stroke="${textColor}"/>
-            </g>
-        </g>
-        <defs>
-        <clipPath id="clip0_0_1">
-        <rect width="100" height="100" fill="white"/>
-        </clipPath>
-        </defs>
-        </svg>
-        `
-        this.div.appendChild(matrixSide_svg)
 
         this.initializeMatrixDivElementArray()
+        this.createMatrixSides()
+        this.addMatrixSides()
     }
 
     initializeMatrixDivElementArray() {
@@ -108,21 +78,91 @@ class MatrixElement {
             this.divElementMatrix.push(divElementRow)
         }
     }
+
+    createHighlightBoarder(pos_x, pos_y, width, height, color, id){
+        let h = document.createElement("div")
+        h.id = id
+        h.style = `
+        position: absolute;
+        width: ${width*this.matrixNumberWidth}px;
+        height: ${height*this.matrixNumberHeight}px;
+        left: ${this.matrixNumberWidth*pos_x}px;
+        top: ${this.matrixNumberHeight*pos_y}px;
+        border: 3px solid ${color}; 
+        `
+        console.log(h)
+        this.div.appendChild(h)
+    }
+
+    createMatrixSides(){
+        // Adding The matrix sides with a svg file
+        this.matrixSide_svg_div = document.createElement("div")
+        this.matrixSide_svg_div.innerHTML = `
+        <svg 
+            width=${this.matrixWidth}
+            height=${this.matrixHeight}
+            viewBox="0 0 ${100*(this.matrixWidth/this.matrixHeight)} 100" 
+            fill="none" 
+            preserveAspectRatio="none" 
+            xmlns="http://www.w3.org/2000/svg"
+        >
+        <g id="Frame 1">
+            <rect width="${100*(this.matrixWidth/this.matrixHeight)}" height="100" fill="${backgroundColor}"/>
+            <g id="right">
+                <line id="right-mid" x1="${100*(this.matrixWidth/this.matrixHeight) - 0.5}" y1="0" x2="${100*(this.matrixWidth/this.matrixHeight) - 0.5}" y2="100" stroke="${textColor}"/>
+                <line id="right-top" x1="${100*(this.matrixWidth/this.matrixHeight)}" y1="99.5" x2="${100*(this.matrixWidth/this.matrixHeight) - 15}" y2="99.5" stroke="${textColor}"/>
+                <line id="right-bottom" x1="${100*(this.matrixWidth/this.matrixHeight)}" y1="0.5" x2="${100*(this.matrixWidth/this.matrixHeight) - 15}" y2="0.5" stroke="${textColor}"/>
+            </g>
+            <g id="left">
+                <line id="left-mid" x1="0.5" y1="0" x2="0.5" y2="100" stroke="${textColor}"/>
+                <line id="left-top" x1="0" y1="0.5" x2="15" y2="0.5" stroke="${textColor}"/>
+                <line id="left-bottom" x1="0" y1="99.5" x2="15" y2="99.5" stroke="${textColor}"/>
+            </g>
+        </g>
+        <defs>
+        </defs>
+        </svg>
+        `
+    }
+
+    addMatrixSides(){
+        this.div.appendChild(this.matrixSide_svg_div)
+    }
+
+    addToMatrixEquation(){
+        this.parent.appendChild(this.div)
+    }
 }
 
 class MatrixEquation {
     elementArray = []
     id = null
-    constructor(id, parent_id) {
+    div = null
+    constructor(id) {
         this.id = id
+        this.div = document.getElementById(this.id)
+    }
+
+    renderEquation(){
+        for (let i = 0; i < this.elementArray.length; i++){
+            if (this.elementArray[i] instanceof MatrixElement){
+                this.elementArray[i].addToMatrixEquation()
+            }
+            else if (typeof this.elementArray[i] == "string") {
+                let elm = document.createElement("p")
+                elm.classList.add("matrix_element_string")
+                elm.textContent = this.elementArray[i]
+                this.div.appendChild(elm)
+            }
+        }
     }
 
     addElement(element){
         if (element instanceof MatrixElement){
-            console.log("MatrixElement")
+            this.elementArray.push(element)
         }
-        else if (element instanceof String){
-            console.log("String")
+        else if (typeof element == "string"){
+            this.elementArray.push(element)
         }
         else {
             console.log("hmm")
@@ -171,7 +211,10 @@ mEq1.addElement(m1Element)
 mEq1.addElement(m2Element)
 mEq1.addElement("$$=$$")
 mEq1.addElement(m3Element)
+mEq1.renderEquation()
 
-let mEq2 = new MatrixEquation("matrix-eq-2")
-let m4Element = new MatrixElement(m4, "matrix4", mEq2.getId(), 128+64, 128)
+m1Element.createHighlightBoarder(0,0, 1, 2, "#ff0000", "test_highlight1")
+//m1Element.createHighlightBoarder(1,0, 1, 1, "#00ff00", "test_highlight2")
+//m1Element.createHighlightBoarder(0,1, 1, 1, "#ff00ff", "test_highlight3")
+//m1Element.createHighlightBoarder(1,1, 1, 1, "#0000ff", "test_highlight4")
 

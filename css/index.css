@@ -100,4 +100,224 @@ p {
     margin: auto 0.2em;
 }
 
+@keyframes highlight1 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    37.5% {
+        left: 0px;
+        top: 0px;
+    }
+    50% {
+        left: 0px;
+        top: 64px;
+    }
+    87.5% {
+        left: 0px;
+        top: 64px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@keyframes highlight2 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    12.5% {
+        left: 64px;
+        top: 0px;
+    }
+    25% {
+        left: 0px;
+        top: 0px;
+    }
+    37.5% {
+        left: 64px;
+        top: 0px;
+    }
+    50% {
+        left: 0px;
+        top: 64px;
+    }
+    62.5% {
+        left: 64px;
+        top: 64px;
+    }
+    75% {
+        left: 0px;
+        top: 64px;
+    }
+    87.5% {
+        left: 64px;
+        top: 64px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@keyframes highlight3 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    12.5% {
+        left: 0px;
+        top: 0px;
+    }
+    25% {
+        left: 64px;
+        top: 0px;
+    }
+    37.5% {
+        left: 64px;
+        top: 0px;
+    }
+    50% {
+        left: 0px;
+        top: 0px;
+    }
+    62.5% {
+        left: 0px;
+        top: 0px;
+    }
+    75% {
+        left: 64px;
+        top: 0px;
+    }
+    87.5% {
+        left: 64px;
+        top: 0px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@keyframes highlight4 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    12.5% {
+        left: 0px;
+        top: 64px;
+    }
+    25% {
+        left: 64px;
+        top: 0px;
+    }
+    37.5% {
+        left: 64px;
+        top: 64px;
+    }
+    50% {
+        left: 0px;
+        top: 0px;
+    }
+    62.5% {
+        left: 0px;
+        top: 64px;
+    }
+    75% {
+        left: 64px;
+        top: 0px;
+    }
+    87.5% {
+        left: 64px;
+        top: 64px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@keyframes highlight5 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    12.5% {
+        left: 0px;
+        top: 0px;
+    }
+    25% {
+        left: 160px;
+        top: 0px;
+    }
+    37.5% {
+        left: 160px;
+        top: 0px;
+    }
+    50% {
+        left: 0px;
+        top: 64px;
+    }
+    62.5% {
+        left: 0px;
+        top: 64px;
+    }
+    75% {
+        left: 160px;
+        top: 64px;
+    }
+    87.5% {
+        left: 160px;
+        top: 64px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+
+#test_highlight1 {
+    display: flex;
+    animation: highlight1 16s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.72,0,.28,1);
+}
+
+#test_highlight2 {
+    display: flex;
+    animation: highlight2 16s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.72,0,.28,1);
+}
+
+#test_highlight3 {
+    display: flex;
+    animation: highlight3 16s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.72,0,.28,1);
+}
+
+#test_highlight4 {
+    display: flex;
+    animation: highlight4 16s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.72,0,.28,1);
+}
+
+#test_highlight5 {
+    display: flex;
+    animation: highlight5 16s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.72,0,.28,1);
+}
+
 

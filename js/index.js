@@ -79,18 +79,26 @@ class MatrixElement {
         }
     }
 
-    createHighlightBoarder(pos_x, pos_y, width, height, color, id){
+    createHighlightBoarder(pos_x, pos_y, width, height, color, id, dimention_frac){
         let h = document.createElement("div")
+        let h_internal = document.createElement("div")
+        h_internal.style = `
+        width: ${this.matrixNumberWidth*(dimention_frac) + (width-1)*this.matrixNumberWidth}px;
+        height: ${this.matrixNumberHeight*(dimention_frac) + (height-1)*this.matrixNumberHeight}px;
+        border: 2px solid ${color};
+        margin: auto;
+        `
         h.id = id
         h.style = `
         position: absolute;
+        flex: 0 0 auto;
         width: ${width*this.matrixNumberWidth}px;
         height: ${height*this.matrixNumberHeight}px;
         left: ${this.matrixNumberWidth*pos_x}px;
         top: ${this.matrixNumberHeight*pos_y}px;
-        border: 3px solid ${color}; 
+        background-color: transparent;
         `
-        console.log(h)
+        h.appendChild(h_internal)
         this.div.appendChild(h)
     }
 
@@ -213,8 +221,8 @@ mEq1.addElement("$$=$$")
 mEq1.addElement(m3Element)
 mEq1.renderEquation()
 
-m1Element.createHighlightBoarder(0,0, 1, 2, "#ff0000", "test_highlight1")
-//m1Element.createHighlightBoarder(1,0, 1, 1, "#00ff00", "test_highlight2")
-//m1Element.createHighlightBoarder(0,1, 1, 1, "#ff00ff", "test_highlight3")
-//m1Element.createHighlightBoarder(1,1, 1, 1, "#0000ff", "test_highlight4")
-
+m1Element.createHighlightBoarder(0,0, 2, 1, "#ff0000", "test_highlight1", 7/10)
+m1Element.createHighlightBoarder(0,0, 1, 1, "#0000ff", "test_highlight2", 6/10)
+m2Element.createHighlightBoarder(0,0, 1, 2, "#ff0000", "test_highlight3", 7/10)
+m2Element.createHighlightBoarder(0,0, 1, 1, "#0000ff", "test_highlight4", 6/10)
+m3Element.createHighlightBoarder(0,0, 1, 1, "#00ff00", "test_highlight5", 8.5/10)

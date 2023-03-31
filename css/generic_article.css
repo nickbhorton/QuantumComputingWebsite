@@ -1,0 +1,115 @@
+:root {
+    --color-light-green: #AEC3B0;
+    --color-light-blue: #598392;
+    --color-dark-blue: #124559;
+    --color-black: #01161E;
+    --color-white: #EFF6E0;
+    --color-dark: #2b2d42;
+    --color-mid: #8d99ae;
+    --color-light: #edf2f4;
+  }
+
+.header {
+    width: 100%;
+    height: 50px;
+    display: block;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+}
+
+body, html{
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    margin: 0px;
+}
+.matrixBox{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    /*
+    border: 1px solid #ff0000;
+    background-color: white;
+    */
+}
+
+
+.section-label,
+.body-paragraph{
+font-family: sans-serif;
+}
+
+.section-label{
+    font-size: 40px;
+    border-left: 3px solid var(--color-light);
+    padding: 0em 0.3em;
+    margin: 0.7em 0.7em;
+}
+
+.body-paragraph{
+    margin: 0em 2em;
+    line-height: 1.7em;
+}
+
+p {
+    font-size: 20px;
+    margin: auto;
+}
+
+.matrixEquation {
+    margin: 1em;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.matrix{
+    position: relative;
+    margin: 0px 3px;
+}
+
+.p-element-matrix{
+    font-size: 32px;
+}
+
+.side_bar{
+    width: 12%;
+    min-height: 100%;
+    background-color: var(--color-light);
+}
+
+.article{
+    width: 85%;
+}
+
+.page_elements{
+    display: flex;
+    justify-content: left;
+}
+
+.side_bar ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.side_bar button {
+    letter-spacing: 0.1em;
+    text-align: left;
+    font-size: 16px;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    padding: 0.5em;
+    width: 100%;
+    border: 0px solid transparent;
+}
+
+.side_bar button:hover {
+    color: var(--color-dark);
+    background-color: var(--color-mid);
+}
+
+.matrix_element_string {
+    font-size: 40px;
+    margin: auto 0.2em;
+}
+

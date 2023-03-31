@@ -1,105 +1,3 @@
-:root {
-    --color-light-green: #AEC3B0;
-    --color-light-blue: #598392;
-    --color-dark-blue: #124559;
-    --color-black: #01161E;
-    --color-white: #EFF6E0;
-  }
-
-body, html{
-    color: var(--color-black);
-    background-color: var(--color-white);
-    margin: 0px;
-}
-.matrixBox{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    /*
-    border: 1px solid #ff0000;
-    background-color: white;
-    */
-}
-
-
-.section-label,
-.body-paragraph{
-font-family: sans-serif;
-}
-
-.section-label{
-    font-size: 40px;
-    border-left: 3px solid var(--color-light-blue);
-    padding: 0em 0.3em;
-    margin: 0.7em 0.7em;
-}
-
-.body-paragraph{
-    margin: 0em 2em;
-    line-height: 1.7em;
-}
-
-p {
-    font-size: 20px;
-    margin: auto;
-}
-
-.matrixEquation {
-    margin: 1em;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-}
-
-.matrix{
-    position: relative;
-    margin: 0px 3px;
-}
-
-.p-element-matrix{
-    font-size: 32px;
-}
-
-.side_bar{
-    width: 15%;
-    min-height: 100%;
-    background-color: var(--color-light-green);
-}
-
-.article{
-    width: 85%;
-}
-
-.page_elements{
-    display: flex;
-    justify-content: left;
-}
-
-.side_bar ul {
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-}
-
-.side_bar button {
-    letter-spacing: 0.1em;
-    text-align: left;
-    font-size: 16px;
-    background-color: var(--color-light-green);
-    padding: 0.5em;
-    width: 100%;
-    border: 0px solid transparent;
-}
-
-.side_bar button:hover {
-    background-color: var(--color-light-blue);
-}
-
-.matrix_element_string {
-    font-size: 40px;
-    margin: auto 0.2em;
-}
-
 @keyframes highlight1 {
     0% {
         left: 0px;
@@ -279,6 +177,45 @@ p {
     }
 }
 
+@keyframes highlight6 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    12.5% {
+        left: 82px;
+        top: 0px;
+    }
+    25% {
+        left: 160px;
+        top: 0px;
+    }
+    37.5% {
+        left: 242px;
+        top: 0px;
+    }
+    50% {
+        left: 0px;
+        top: 64px;
+    }
+    62.5% {
+        left: 82px;
+        top: 64px;
+    }
+    75% {
+        left: 160px;
+        top: 64px;
+    }
+    87.5% {
+        left: 242px;
+        top: 64px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
 
 #test_highlight1 {
     display: flex;
@@ -320,4 +257,10 @@ p {
     animation-timing-function: cubic-bezier(.72,0,.28,1);
 }
 
-
+#test_highlight6 {
+    display: flex;
+    animation: highlight6 16s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.72,0,.28,1);
+}
